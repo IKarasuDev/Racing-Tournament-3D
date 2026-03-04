@@ -131,9 +131,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g57qn")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d6h7a"]
-size = Vector3(1.091919, 2.9991608, 0.40063477)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulvmw"]
 resource_name = "Material.001"
 transparency = 4
@@ -175,70 +172,81 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vgrec")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_d6h7a"]
+size = Vector3(1.8754883, 0.9555664, 4.213516)
+
 [node name="CarBase" type="VehicleBody3D"]
+transform = Transform3D(0.9994409, 0, 0.033434276, 0, 1, 0, -0.033434276, 0, 0.9994409, 0, 0, 0)
 mass = 1300.0
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0.3, 0)
+center_of_mass = Vector3(0, -0.8, 0)
 script = ExtResource("1_d6h7a")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 0, 0, 0.048)
+transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_agiao")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.0025024414, 0.17932129, 0.04886214)
-visible = false
-shape = SubResource("BoxShape3D_d6h7a")
-debug_color = Color(1, 0, 0, 1)
-
 [node name="FrontLeft" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82, -0.336, 1.33)
-use_as_traction = true
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.82112044, -0.336, 1.2965093)
 use_as_steering = true
 wheel_radius = 0.35
 wheel_friction_slip = 2.0
-suspension_stiffness = 20.0
+suspension_travel = 0.3
+suspension_stiffness = 25.0
+damping_compression = 3.0
+damping_relaxation = 4.0
 
 [node name="Cylinder" type="MeshInstance3D" parent="FrontLeft"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_d6h7a")
 skeleton = NodePath("")
 
-[node name="FronRight" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82, -0.336, 1.33)
-use_as_traction = true
+[node name="FrontRight" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82, -0.336, 1.297)
 use_as_steering = true
 wheel_radius = 0.35
 wheel_friction_slip = 2.0
-suspension_stiffness = 20.0
+suspension_travel = 0.3
+suspension_stiffness = 25.0
+damping_compression = 3.0
+damping_relaxation = 4.0
 
-[node name="Cylinder" type="MeshInstance3D" parent="FronRight"]
+[node name="Cylinder" type="MeshInstance3D" parent="FrontRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 mesh = SubResource("ArrayMesh_d6h7a")
 skeleton = NodePath("")
 
 [node name="RearRight" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82, -0.336, -1.24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82, -0.336, -1.273)
 use_as_traction = true
 wheel_radius = 0.35
 wheel_friction_slip = 2.0
-suspension_stiffness = 20.0
+suspension_travel = 0.4
+suspension_stiffness = 25.0
+damping_compression = 3.0
+damping_relaxation = 4.0
 
 [node name="Cylinder" type="MeshInstance3D" parent="RearRight"]
 mesh = SubResource("ArrayMesh_d6h7a")
 skeleton = NodePath("")
 
 [node name="RearLeft" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82, -0.336, -1.24)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.8211028, -0.336, -1.2729636)
 use_as_traction = true
 wheel_radius = 0.35
 wheel_friction_slip = 2.0
-suspension_stiffness = 20.0
+suspension_travel = 0.4
+suspension_stiffness = 25.0
+damping_compression = 3.0
+damping_relaxation = 4.0
 
 [node name="Cylinder" type="MeshInstance3D" parent="RearLeft"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1.0000002, 0, 8.568168e-08, 0, 1, 0, -8.568168e-08, 0, -1.0000002, 0, 0, 0)
 mesh = SubResource("ArrayMesh_d6h7a")
 skeleton = NodePath("")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 3.965757e-09, -8.7332786e-08, -4.7306322e-08, 0.8155321, 0.578712, 7.351771e-08, 0.578712, -0.815532, 0, 1.4852886, -3.2101352)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.000037, 0, -2.1606684e-07, 0, 1, 0, 2.1606684e-07, 0, 1.000037, -0.012451065, 0.022216797, -0.07894861)
+shape = SubResource("BoxShape3D_d6h7a")
+debug_color = Color(1, 0, 0, 1)
