@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwwfowa3pff42"]
+
+[ext_resource type="PackedScene" uid="uid://cryij1mp7npp7" path="res://glbModels/TracksModels/DeckalFinish.glb" id="1_ktb7n"]
+
+[node name="DeckalFinish" instance=ExtResource("1_ktb7n")]
