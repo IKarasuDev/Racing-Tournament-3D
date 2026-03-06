@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b3dk0jn28g3gd" path="res://Scenes/HexagonesTrack/track_flat_curve_sharp.tscn" id="4_uhq1k"]
 [ext_resource type="Script" uid="uid://5wdnhbjqdhcd" path="res://Scenes/scripts/camerarig/camera_rig.gd" id="6_j6pps"]
 [ext_resource type="PackedScene" uid="uid://jdy7t6dlvlvx" path="res://Scenes/HexagonesTrack/grass_flat.tscn" id="6_sbd7y"]
-[ext_resource type="PackedScene" uid="uid://brs1dhwutau61" path="res://Scenes/Cars/toyota_ae_86.tscn" id="7_ead23"]
+[ext_resource type="PackedScene" uid="uid://cxyq16nrvw4jl" path="res://Scenes/Cars/nissan_gtr_35.tscn" id="7_ead23"]
 
 [node name="Track1" type="Node3D"]
 
@@ -1115,7 +1115,7 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -100, 0, 137.764)
 
 [node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("6_j6pps")
-target = NodePath("../ToyotaAE86")
+target = NodePath("../NissanGTR35")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraRig"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, 0)
@@ -1123,5 +1123,5 @@ spring_length = 6.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D"]
 
-[node name="ToyotaAE86" parent="." instance=ExtResource("7_ead23")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.6989074, 0)
+[node name="NissanGTR35" parent="." instance=ExtResource("7_ead23")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.8529105, 0)
