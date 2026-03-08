@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://wso201gep61u"]
+[gd_scene load_steps=8 format=3 uid="uid://wso201gep61u"]
 
 [ext_resource type="PackedScene" uid="uid://cn3tmio88d6fv" path="res://Scenes/HexagonesTrack/TrackFlatStraight.tscn" id="1_kqmmy"]
+[ext_resource type="PackedScene" uid="uid://bwwfowa3pff42" path="res://Scenes/HexagonesTrack/deckal_finish.tscn" id="2_ahm3c"]
 [ext_resource type="Script" uid="uid://5wdnhbjqdhcd" path="res://Scenes/scripts/camerarig/camera_rig.gd" id="3_1t62g"]
 [ext_resource type="PackedScene" uid="uid://dx7q2yy3oj0mh" path="res://Scenes/HexagonesTrack/track_flat_curve_gentle.tscn" id="4_j84hh"]
 [ext_resource type="PackedScene" uid="uid://b3dk0jn28g3gd" path="res://Scenes/HexagonesTrack/track_flat_curve_sharp.tscn" id="5_gk65l"]
@@ -31,6 +32,9 @@ directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.0
 directional_shadow_max_distance = 8192.0
 sky_mode = 1
+
+[node name="DeckalFinish" parent="Tools" instance=ExtResource("2_ahm3c")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 8, 0, 0)
 
 [node name="Track" type="Node" parent="."]
 
