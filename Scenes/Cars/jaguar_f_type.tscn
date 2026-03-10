@@ -208,6 +208,8 @@ center_of_mass = Vector3(0, -0.8, 0)
 angular_damp_mode = 1
 angular_damp = 5.0
 script = ExtResource("1_oph1d")
+vehicle_name = "Jaguar F-Type"
+traction_type = "RWD"
 
 [node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 0, 0, 0)

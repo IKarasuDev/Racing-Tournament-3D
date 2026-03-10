@@ -536,3 +536,14 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -330, -0.7, -51.8)
 
 [node name="DeckalFinish" parent="." instance=ExtResource("7_tlwtw")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -12, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.36487675, 0.50981194, 0.7790743, 0, -0.83676434, 0.54756325, 0.93105584, -0.19979309, -0.30531585, 78.76435, 150.22246, -20.968414)
+light_color = Color(0.956803, 0.8464598, 0.7156158, 1)
+light_energy = 2.0
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.0
+directional_shadow_max_distance = 8192.0
+sky_mode = 1

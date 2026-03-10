@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://c07tlee5i7th5"]
+
+[ext_resource type="Script" uid="uid://ddqdyuem8mcn1" path="res://Scenes/UI/VehicleSelectMenu/vehicle_select_menu.gd" id="1_fggay"]
+[ext_resource type="PackedScene" uid="uid://gel4ykxx63b3" path="res://Scenes/Cars/CarBase/MustanGT.tscn" id="2_7sstc"]
+[ext_resource type="PackedScene" uid="uid://deqin2mr0mymm" path="res://Scenes/Cars/jaguar_f_type.tscn" id="3_wxs28"]
+[ext_resource type="PackedScene" uid="uid://brs1dhwutau61" path="res://Scenes/Cars/toyota_ae_86.tscn" id="4_0qq0v"]
+[ext_resource type="PackedScene" uid="uid://crbx8kw6tjx0q" path="res://Scenes/Cars/mitsubishi_lancer_ix.tscn" id="5_32dtx"]
+[ext_resource type="PackedScene" uid="uid://c26bid1r6n5tm" path="res://Scenes/Cars/nissan_gtr_33.tscn" id="6_pfcyi"]
+[ext_resource type="PackedScene" uid="uid://cxyq16nrvw4jl" path="res://Scenes/Cars/nissan_gtr_35.tscn" id="7_g8srs"]
+[ext_resource type="PackedScene" uid="uid://bjxigkxkqflrv" path="res://Scenes/Cars/mclaren_senna.tscn" id="8_a76m7"]
+[ext_resource type="PackedScene" uid="uid://dcx3q1t3td8b" path="res://Scenes/Cars/porsche_911_carrera.tscn" id="9_2pvlf"]
+[ext_resource type="PackedScene" uid="uid://cn3tmio88d6fv" path="res://Scenes/HexagonesTrack/TrackFlatStraight.tscn" id="10_wxs28"]
+[ext_resource type="PackedScene" uid="uid://jdy7t6dlvlvx" path="res://Scenes/HexagonesTrack/grass_flat.tscn" id="11_0qq0v"]
+
+[node name="VehicleSelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fggay")
+vehicles = Array[PackedScene]([ExtResource("2_7sstc"), ExtResource("3_wxs28"), ExtResource("4_0qq0v"), ExtResource("5_32dtx"), ExtResource("6_pfcyi"), ExtResource("7_g8srs"), ExtResource("8_a76m7"), ExtResource("9_2pvlf")])
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 8.0
+offset_right = 833.0
+offset_bottom = 628.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="VehiclePreview" type="SubViewportContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CenterContainer/VBoxContainer/VehiclePreview"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="PreviewRoot" type="Node3D" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot"]
+transform = Transform3D(-0.8660254, 0.22777249, -0.44510648, 0, 0.89021283, 0.45554492, 0.50000006, 0.39451346, -0.7709469, -1.9978838, 1.4868073, -4.302)
+fov = 47.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot"]
+transform = Transform3D(-0.8771881, 0, -0.48014688, -0.03339304, 0.9975786, 0.06100628, 0.47898427, 0.06954755, -0.8750641, 3.226295, 11.829739, -19.131416)
+
+[node name="trackFlatStraight" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot" instance=ExtResource("10_wxs28")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, -0.7, 0)
+
+[node name="grassFlat" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.9999994, 0, 0, 0, 0.9999994, 0, 0, 0, 0.9999994, 0.49, 0, 0.873)
+
+[node name="grassFlat4" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.99999934, 0, 0, 0, 0.99999934, 0.4896151, 0, -0.8598637)
+
+[node name="grassFlat6" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.99999905, 0, 0, 0, 0.99999905, 0, 0, 0, 0.99999905, 0.989615, 0, 0.0068029454)
+
+[node name="grassFlat5" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.9999992, 0, 0, 0, 0.9999992, 0, 0, 0, 0.9999992, -0.4770515, 0, -0.8598637)
+
+[node name="grassFlat2" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.99999934, 0, 0, 0, 0.99999934, -0.4770515, 0, 0.87346953)
+
+[node name="grassFlat3" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.9999989, 0, 0, 0, 0.9999989, 0, 0, 0, 0.9999989, -0.97705126, 0, 0.006802801)
+
+[node name="VehicleName" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="TractionType" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "<"
+
+[node name="SelectButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Select Vehicle"
+
+[node name="RightButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = ">
+"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/LeftButton" to="." method="previous_vehicle"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/SelectButton" to="." method="select_vehicle"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/RightButton" to="." method="next_vehicle"]

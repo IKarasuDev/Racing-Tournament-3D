@@ -16,6 +16,10 @@ extends VehicleBody3D
 @onready var rl = $RearLeft
 @onready var rr = $RearRight
 
+@export var vehicle_name: String = ""
+@export var traction_type: String = ""
+
+@export var player_control := true
 
 func _ready():
 	if car_mesh:
@@ -23,6 +27,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	if !player_control:
+		return
+	
 	var forward_input = Input.get_axis("S", "W")
 	var steer_input = Input.get_axis("D", "A")
 

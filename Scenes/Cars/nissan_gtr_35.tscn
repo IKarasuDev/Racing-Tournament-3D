@@ -209,6 +209,8 @@ center_of_mass = Vector3(0, -0.8, 0)
 angular_damp_mode = 1
 angular_damp = 4.0
 script = ExtResource("1_2sd1q")
+vehicle_name = "Nissan GTR 35 Nismo"
+traction_type = "AWD"
 
 [node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.4, 0, 0, 0, -6.119594e-08, -1.4, 0, 1.4, -6.119594e-08, 0, 0, 0)
