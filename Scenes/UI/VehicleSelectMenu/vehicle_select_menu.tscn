@@ -24,81 +24,155 @@ grow_vertical = 2
 script = ExtResource("1_fggay")
 vehicles = Array[PackedScene]([ExtResource("2_7sstc"), ExtResource("3_wxs28"), ExtResource("4_0qq0v"), ExtResource("5_32dtx"), ExtResource("6_pfcyi"), ExtResource("7_g8srs"), ExtResource("8_a76m7"), ExtResource("9_2pvlf")])
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_left = 321.0
-offset_top = 8.0
-offset_right = 833.0
-offset_bottom = 628.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="PlayerSection" type="Node" parent="HBoxContainer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PlayerSection"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 464.0
+offset_bottom = 607.0
+
+[node name="Player" type="Label" parent="HBoxContainer/PlayerSection/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Player's Car"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="VehiclePreview" type="SubViewportContainer" parent="HBoxContainer/PlayerSection/VBoxContainer"]
 layout_mode = 2
 
-[node name="VehiclePreview" type="SubViewportContainer" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SubViewport" type="SubViewport" parent="CenterContainer/VBoxContainer/VehiclePreview"]
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview"]
 handle_input_locally = false
+size = Vector2i(400, 400)
 render_target_update_mode = 4
 
-[node name="PreviewRoot" type="Node3D" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport"]
+[node name="PlayerPreviewRoot" type="Node3D" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport"]
 
-[node name="Camera3D" type="Camera3D" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot"]
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport/PlayerPreviewRoot"]
 transform = Transform3D(-0.8660254, 0.22777249, -0.44510648, 0, 0.89021283, 0.45554492, 0.50000006, 0.39451346, -0.7709469, -1.9978838, 1.4868073, -4.302)
 fov = 47.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport/PlayerPreviewRoot"]
 transform = Transform3D(-0.8771881, 0, -0.48014688, -0.03339304, 0.9975786, 0.06100628, 0.47898427, 0.06954755, -0.8750641, 3.226295, 11.829739, -19.131416)
 
-[node name="trackFlatStraight" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot" instance=ExtResource("10_wxs28")]
+[node name="trackFlatStraight" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport/PlayerPreviewRoot" instance=ExtResource("10_wxs28")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, -0.7, 0)
 
-[node name="grassFlat" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+[node name="grassFlat" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport/PlayerPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
 transform = Transform3D(0.9999994, 0, 0, 0, 0.9999994, 0, 0, 0, 0.9999994, 0.49, 0, 0.873)
 
-[node name="grassFlat4" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+[node name="grassFlat4" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport/PlayerPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
 transform = Transform3D(0.99999934, 0, 0, 0, 0.99999934, 0, 0, 0, 0.99999934, 0.4896151, 0, -0.8598637)
 
-[node name="grassFlat6" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+[node name="grassFlat6" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport/PlayerPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
 transform = Transform3D(0.99999905, 0, 0, 0, 0.99999905, 0, 0, 0, 0.99999905, 0.989615, 0, 0.0068029454)
 
-[node name="grassFlat5" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+[node name="grassFlat5" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport/PlayerPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
 transform = Transform3D(0.9999992, 0, 0, 0, 0.9999992, 0, 0, 0, 0.9999992, -0.4770515, 0, -0.8598637)
 
-[node name="grassFlat2" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+[node name="grassFlat2" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport/PlayerPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
 transform = Transform3D(0.99999934, 0, 0, 0, 0.99999934, 0, 0, 0, 0.99999934, -0.4770515, 0, 0.87346953)
 
-[node name="grassFlat3" parent="CenterContainer/VBoxContainer/VehiclePreview/SubViewport/PreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+[node name="grassFlat3" parent="HBoxContainer/PlayerSection/VBoxContainer/VehiclePreview/SubViewport/PlayerPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
 transform = Transform3D(0.9999989, 0, 0, 0, 0.9999989, 0, 0, 0, 0.9999989, -0.97705126, 0, 0.006802801)
 
-[node name="VehicleName" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="VehicleName" type="Label" parent="HBoxContainer/PlayerSection/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="TractionType" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="TractionType" type="Label" parent="HBoxContainer/PlayerSection/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PlayerSection/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="LeftButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="LeftButton" type="Button" parent="HBoxContainer/PlayerSection/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "<"
 
-[node name="SelectButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="SelectButton" type="Button" parent="HBoxContainer/PlayerSection/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Select Vehicle"
 
-[node name="RightButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="RightButton" type="Button" parent="HBoxContainer/PlayerSection/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = ">
 "
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/LeftButton" to="." method="previous_vehicle"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/SelectButton" to="." method="select_vehicle"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/RightButton" to="." method="next_vehicle"]
+[node name="IASection" type="Node" parent="HBoxContainer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/IASection"]
+offset_left = 688.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 607.0
+
+[node name="AI" type="Label" parent="HBoxContainer/IASection/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "oponent's Car"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer/IASection/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(400, 400)
+render_target_update_mode = 4
+
+[node name="AIPreviewRoot" type="Node3D" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.49102, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer/SubViewport/AIPreviewRoot"]
+transform = Transform3D(-0.8660254, 0.22777249, -0.44510648, 0, 0.89021283, 0.45554492, 0.50000006, 0.39451346, -0.7709469, -1.9978867, 1.4868073, -4.302)
+fov = 47.0
+
+[node name="trackFlatStraight" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer/SubViewport/AIPreviewRoot" instance=ExtResource("10_wxs28")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, -0.7, 0)
+
+[node name="grassFlat" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer/SubViewport/AIPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.9999994, 0, 0, 0, 0.9999994, 0, 0, 0, 0.9999994, 0.49, 0, 0.873)
+
+[node name="grassFlat4" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer/SubViewport/AIPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.99999934, 0, 0, 0, 0.99999934, 0.4896151, 0, -0.8598637)
+
+[node name="grassFlat6" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer/SubViewport/AIPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.99999905, 0, 0, 0, 0.99999905, 0, 0, 0, 0.99999905, 0.989615, 0, 0.0068029454)
+
+[node name="grassFlat5" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer/SubViewport/AIPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.9999992, 0, 0, 0, 0.9999992, 0, 0, 0, 0.9999992, -0.4770515, 0, -0.8598637)
+
+[node name="grassFlat2" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer/SubViewport/AIPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.99999934, 0, 0, 0, 0.99999934, 0, 0, 0, 0.99999934, -0.4770515, 0, 0.87346953)
+
+[node name="grassFlat3" parent="HBoxContainer/IASection/VBoxContainer/SubViewportContainer/SubViewport/AIPreviewRoot/trackFlatStraight" instance=ExtResource("11_0qq0v")]
+transform = Transform3D(0.9999989, 0, 0, 0, 0.9999989, 0, 0, 0, 0.9999989, -0.97705126, 0, 0.006802801)
+
+[node name="AIVehicleName" type="Label" parent="HBoxContainer/IASection/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="AITractionType" type="Label" parent="HBoxContainer/IASection/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/PlayerSection/VBoxContainer/HBoxContainer/LeftButton" to="." method="previous_vehicle"]
+[connection signal="pressed" from="HBoxContainer/PlayerSection/VBoxContainer/HBoxContainer/SelectButton" to="." method="select_vehicle"]
+[connection signal="pressed" from="HBoxContainer/PlayerSection/VBoxContainer/HBoxContainer/RightButton" to="." method="next_vehicle"]

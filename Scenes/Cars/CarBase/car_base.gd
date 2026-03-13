@@ -16,9 +16,9 @@ extends VehicleBody3D
 @onready var rl = $RearLeft
 @onready var rr = $RearRight
 
-@export var vehicle_name: String = ""
-@export var traction_type: String = ""
-
+@export var vehicle_id : int
+@export var vehicle_name : String
+@export var traction_type : String
 @export var player_control := true
 
 func _ready():

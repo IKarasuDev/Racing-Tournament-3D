@@ -180,8 +180,9 @@ mass = 1100.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.8, 0)
 angular_damp_mode = 1
-angular_damp = 4.0
+angular_damp = 7.0
 script = ExtResource("1_mc2k8")
+vehicle_id = 3
 vehicle_name = "Mitsubishi Lancer Evo IX"
 traction_type = "RWD"
 

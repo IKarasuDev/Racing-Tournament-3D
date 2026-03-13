@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Race"
+run/main_scene="uid://cyum0uhphjlm3"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+WorldManager="*res://Singletons/WorldManager/WorldManager.gd"
 
 [input]
 
