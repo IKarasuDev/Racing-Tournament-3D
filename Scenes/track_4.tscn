@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://clck4qysnij3v"]
+[gd_scene load_steps=6 format=3 uid="uid://clck4qysnij3v"]
 
 [ext_resource type="PackedScene" uid="uid://cn3tmio88d6fv" path="res://Scenes/HexagonesTrack/TrackFlatStraight.tscn" id="1_4rjw3"]
-[ext_resource type="PackedScene" uid="uid://b3dk0jn28g3gd" path="res://Scenes/HexagonesTrack/track_flat_curve_sharp.tscn" id="2_diur2"]
 [ext_resource type="PackedScene" uid="uid://dx7q2yy3oj0mh" path="res://Scenes/HexagonesTrack/track_flat_curve_gentle.tscn" id="3_3nq5t"]
 [ext_resource type="PackedScene" uid="uid://bwwfowa3pff42" path="res://Scenes/HexagonesTrack/deckal_finish.tscn" id="4_diur2"]
-[ext_resource type="PackedScene" uid="uid://dcx3q1t3td8b" path="res://Scenes/Cars/porsche_911_carrera.tscn" id="4_nck7d"]
 [ext_resource type="Script" uid="uid://5wdnhbjqdhcd" path="res://Scenes/scripts/camerarig/camera_rig.gd" id="5_cg8wu"]
 [ext_resource type="PackedScene" uid="uid://jdy7t6dlvlvx" path="res://Scenes/HexagonesTrack/grass_flat.tscn" id="7_3nq5t"]
 
@@ -87,14 +85,23 @@ transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, -690,
 [node name="trackFlatStraight25" parent="Track" instance=ExtResource("1_4rjw3")]
 transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, -720, -0.7, 0)
 
-[node name="trackFlatStraight26" parent="Track" instance=ExtResource("1_4rjw3")]
-transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, -765, -0.7, 26)
-
-[node name="trackFlatStraight27" parent="Track" instance=ExtResource("1_4rjw3")]
-transform = Transform3D(14.999998, 0, -25.980762, 0, 29.999998, 0, 25.980762, 0, 14.999998, -780, -0.7, 52)
-
 [node name="trackFlatStraight28" parent="Track" instance=ExtResource("1_4rjw3")]
 transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, -780, -0.7, 156)
+
+[node name="trackFlatStraight56" parent="Track" instance=ExtResource("1_4rjw3")]
+transform = Transform3D(14.999998, 0, 25.980762, 0, 29.999998, 0, -25.980762, 0, 14.999998, -735, -0.7, 130)
+
+[node name="trackFlatStraight57" parent="Track" instance=ExtResource("1_4rjw3")]
+transform = Transform3D(14.999998, 0, 25.980762, 0, 29.999998, 0, -25.980762, 0, 14.999998, -810, -0.7, 104)
+
+[node name="trackFlatStraight58" parent="Track" instance=ExtResource("1_4rjw3")]
+transform = Transform3D(14.999998, 0, 25.980762, 0, 29.999998, 0, -25.980762, 0, 14.999998, -795, -0.7, 78)
+
+[node name="trackFlatStraight59" parent="Track" instance=ExtResource("1_4rjw3")]
+transform = Transform3D(14.999998, 0, 25.980762, 0, 29.999998, 0, -25.980762, 0, 14.999998, -780, -0.7, 52)
+
+[node name="trackFlatStraight60" parent="Track" instance=ExtResource("1_4rjw3")]
+transform = Transform3D(14.999998, 0, 25.980762, 0, 29.999998, 0, -25.980762, 0, 14.999998, -765, -0.7, 26)
 
 [node name="trackFlatStraight29" parent="Track" instance=ExtResource("1_4rjw3")]
 transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, -600, -0.7, 104)
@@ -165,6 +172,9 @@ transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, 105, 
 [node name="trackFlatStraight51" parent="Track" instance=ExtResource("1_4rjw3")]
 transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, 120, -0.7, 0)
 
+[node name="trackFlatStraight55" parent="Track" instance=ExtResource("1_4rjw3")]
+transform = Transform3D(14.999998, 0, 25.980762, 0, 29.999998, 0, -25.980762, 0, 14.999998, 150, -0.7, 52)
+
 [node name="trackFlatStraight52" parent="Track" instance=ExtResource("1_4rjw3")]
 transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, 90, -0.7, 0)
 
@@ -174,47 +184,23 @@ transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, 60, -
 [node name="trackFlatStraight54" parent="Track" instance=ExtResource("1_4rjw3")]
 transform = Transform3D(29.999998, 0, 0, 0, 29.999998, 0, 0, 0, 29.999998, 30, -0.7, 0)
 
-[node name="Track_Flat_Curve_Sharp" parent="Track" instance=ExtResource("2_diur2")]
-transform = Transform3D(-15.000002, 0, 25.980762, 0, 30, 0, -25.980762, 0, -15.000002, -750, -0.7, 0)
-
-[node name="Track_Flat_Curve_Sharp3" parent="Track" instance=ExtResource("2_diur2")]
-transform = Transform3D(-15.000002, 0, 25.980762, 0, 30, 0, -25.980762, 0, -15.000002, -795, -0.7, 26)
-
-[node name="Track_Flat_Curve_Sharp2" parent="Track" instance=ExtResource("2_diur2")]
-transform = Transform3D(15, 0, -25.980764, 0, 30, 0, 25.980764, 0, 15, -735, -0.7, 26)
-
-[node name="Track_Flat_Curve_Sharp4" parent="Track" instance=ExtResource("2_diur2")]
-transform = Transform3D(15, 0, -25.980764, 0, 30, 0, 25.980764, 0, 15, -765, -0.7, 78)
-
-[node name="Track_Flat_Curve_Sharp5" parent="Track" instance=ExtResource("2_diur2")]
-transform = Transform3D(-30.000002, 0, -2.6226835e-06, 0, 30, 0, 2.6226835e-06, 0, -30.000002, -810, -0.7, 156)
-
-[node name="Track_Flat_Curve_Sharp6" parent="Track" instance=ExtResource("2_diur2")]
-transform = Transform3D(-14.999998, 0, 25.980764, 0, 30, 0, -25.980764, 0, -14.999998, -750, -0.7, 104)
-
-[node name="Track_Flat_Curve_Sharp7" parent="Track" instance=ExtResource("2_diur2")]
-transform = Transform3D(15, 0, -25.980764, 0, 30, 0, 25.980764, 0, 15, -720, -0.7, 104)
-
-[node name="Track_Flat_Curve_Sharp8" parent="Track" instance=ExtResource("2_diur2")]
-transform = Transform3D(30.000002, 0, 0, 0, 30, 0, 0, 0, 30.000002, 150, -0.7, 0)
-
-[node name="Track_Flat_Curve_Gentle" parent="Track" instance=ExtResource("3_3nq5t")]
-transform = Transform3D(14.999998, 0, 25.980762, 0, 29.999998, 0, -25.980762, 0, 14.999998, -795, -0.7, 78)
-
-[node name="Track_Flat_Curve_Gentle2" parent="Track" instance=ExtResource("3_3nq5t")]
-transform = Transform3D(-15.000001, 0, 25.98076, 0, 29.999998, 0, -25.98076, 0, -15.000001, -810, -0.7, 104)
-
 [node name="Track_Flat_Curve_Gentle3" parent="Track" instance=ExtResource("3_3nq5t")]
-transform = Transform3D(14.999999, 0, -25.980762, 0, 29.999998, 0, 25.980762, 0, 14.999999, -795, -0.7, 130)
+transform = Transform3D(-30, 0, -2.6226833e-06, 0, 29.999998, 0, 2.6226833e-06, 0, -30, -810, -0.7, 156)
+
+[node name="Track_Flat_Curve_Gentle5" parent="Track" instance=ExtResource("3_3nq5t")]
+transform = Transform3D(-14.999997, 0, 25.980762, 0, 29.999998, 0, -25.980762, 0, -14.999997, -825, -0.7, 130)
+
+[node name="Track_Flat_Curve_Gentle24" parent="Track" instance=ExtResource("3_3nq5t")]
+transform = Transform3D(14.999998, 0, 25.980762, 0, 29.999998, 0, -25.980762, 0, 14.999998, -750, -0.7, 0)
 
 [node name="Track_Flat_Curve_Gentle4" parent="Track" instance=ExtResource("3_3nq5t")]
 transform = Transform3D(-15.000002, 0, -25.980762, 0, 29.999998, 0, 25.980762, 0, -15.000002, -750, -0.7, 156)
 
-[node name="Track_Flat_Curve_Gentle5" parent="Track" instance=ExtResource("3_3nq5t")]
-transform = Transform3D(15, 0, -25.980764, 0, 29.999998, 0, 25.980764, 0, 15, -735, -0.7, 130)
-
 [node name="Track_Flat_Curve_Gentle6" parent="Track" instance=ExtResource("3_3nq5t")]
 transform = Transform3D(-14.999998, 0, 25.980764, 0, 29.999998, 0, -25.980764, 0, -14.999998, -735, -0.7, 78)
+
+[node name="Track_Flat_Curve_Gentle23" parent="Track" instance=ExtResource("3_3nq5t")]
+transform = Transform3D(15, 0, -25.980764, 0, 29.999998, 0, 25.980764, 0, 15, -720, -0.7, 104)
 
 [node name="Track_Flat_Curve_Gentle7" parent="Track" instance=ExtResource("3_3nq5t")]
 transform = Transform3D(15, 0, 25.980764, 0, 29.999998, 0, -25.980764, 0, 15, -720, -0.7, 52)
@@ -264,20 +250,18 @@ transform = Transform3D(15, 0, 25.980764, 0, 29.999998, 0, -25.980764, 0, 15, -3
 [node name="Track_Flat_Curve_Gentle22" parent="Track" instance=ExtResource("3_3nq5t")]
 transform = Transform3D(-15.000003, 0, -25.980762, 0, 29.999998, 0, 25.980762, 0, -15.000003, 135, -0.7, 78)
 
-[node name="Track_Flat_Curve_Gentle23" parent="Track" instance=ExtResource("3_3nq5t")]
-transform = Transform3D(15, 0, -25.980764, 0, 29.999998, 0, 25.980764, 0, 15, 150, -0.7, 52)
+[node name="Track_Flat_Curve_Gentle25" parent="Track" instance=ExtResource("3_3nq5t")]
+transform = Transform3D(30.000002, 0, 0, 0, 29.999998, 0, 0, 0, 30.000002, 150, -0.7, 0)
 
-[node name="Track_Flat_Curve_Gentle24" parent="Track" instance=ExtResource("3_3nq5t")]
-transform = Transform3D(-14.999998, 0, 25.980764, 0, 29.999998, 0, -25.980764, 0, -14.999998, 135, -0.7, 26)
+[node name="Track_Flat_Curve_Gentle26" parent="Track" instance=ExtResource("3_3nq5t")]
+transform = Transform3D(15, 0, -25.980764, 0, 29.999998, 0, 25.980764, 0, 15, 165, -0.7, 26)
 
 [node name="DeckalFinish" parent="Track" instance=ExtResource("4_diur2")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 15, -0.7, 0)
 
-[node name="Porsche911Carrera" parent="." instance=ExtResource("4_nck7d")]
-
 [node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("5_cg8wu")
-target = NodePath("../Porsche911Carrera")
+target = NodePath("")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraRig"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, 0)
@@ -374,6 +358,15 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -855, -0.7, 26)
 [node name="grassFlat161" parent="Node" instance=ExtResource("7_3nq5t")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -705, -0.7, 26)
 
+[node name="grassFlat233" parent="Node" instance=ExtResource("7_3nq5t")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -795, -0.7, 26)
+
+[node name="grassFlat234" parent="Node" instance=ExtResource("7_3nq5t")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -765, -0.7, 78)
+
+[node name="grassFlat235" parent="Node" instance=ExtResource("7_3nq5t")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -735, -0.7, 26)
+
 [node name="grassFlat162" parent="Node" instance=ExtResource("7_3nq5t")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -675, -0.7, 26)
 
@@ -456,7 +449,7 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 75, -0.7, 26)
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 105, -0.7, 26)
 
 [node name="grassFlat189" parent="Node" instance=ExtResource("7_3nq5t")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 165, -0.7, 26)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 135, -0.7, 26)
 
 [node name="grassFlat190" parent="Node" instance=ExtResource("7_3nq5t")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 195, -0.7, 26)
@@ -689,6 +682,9 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -660, -0.7, 104)
 [node name="grassFlat68" parent="Node" instance=ExtResource("7_3nq5t")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -780, -0.7, 104)
 
+[node name="grassFlat231" parent="Node" instance=ExtResource("7_3nq5t")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -750, -0.7, 104)
+
 [node name="grassFlat69" parent="Node" instance=ExtResource("7_3nq5t")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -840, -0.7, 104)
 
@@ -875,11 +871,11 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 120, -0.7, 156)
 [node name="grassFlat128" parent="Node" instance=ExtResource("7_3nq5t")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 150, -0.7, 156)
 
-[node name="grassFlat72" parent="Node" instance=ExtResource("7_3nq5t")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -825, -0.7, 130)
-
 [node name="grassFlat73" parent="Node" instance=ExtResource("7_3nq5t")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -765, -0.7, 130)
+
+[node name="grassFlat232" parent="Node" instance=ExtResource("7_3nq5t")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -795, -0.7, 130)
 
 [node name="grassFlat74" parent="Node" instance=ExtResource("7_3nq5t")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -705, -0.7, 130)

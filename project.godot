@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 WorldManager="*res://Singletons/WorldManager/WorldManager.gd"
 
+[global_group]
+
+player=""
+
 [input]
 
 W={

@@ -26,11 +26,11 @@ func _on_vehicles_ready(player_sc, player_name, player_id, opponent_sc, opponent
 	opponent_scene = opponent_sc
 
 	print("Loading Track 1...")
-
 	start_race()
 
+
 func start_race():
-	# tiempo para que el jugador vea el oponente
+
 	await get_tree().create_timer(2).timeout
 
 	await transition.fade_in(2.0)
@@ -39,11 +39,13 @@ func start_race():
 
 	await transition.fade_out(1.5)
 
+
 func load_track():
+
 	for c in scene_container.get_children():
 		c.queue_free()
 
-	var track = load("res://Scenes/track_1.tscn").instantiate()
+	var track = load("res://Scenes/Track1/track_1.tscn").instantiate()
 
 	scene_container.add_child(track)
 
@@ -67,11 +69,21 @@ func spawn_vehicles(track):
 	ai_vehicle.global_position = ai_spawn.global_position
 	ai_vehicle.global_rotation = ai_spawn.global_rotation
 
+	# CONTROL MODES
 	player_vehicle.player_control = true
+	player_vehicle.ai_control = false
+
 	ai_vehicle.player_control = false
+	ai_vehicle.ai_control = true
+
+	print("Player spawned:", player_vehicle.vehicle_name)
+	print("AI spawned:", ai_vehicle.vehicle_name)
+
+	print("Player control:", player_vehicle.player_control)
+	print("AI control:", ai_vehicle.ai_control)
 
 	assign_camera_target(track, player_vehicle)
-	
+
 
 func assign_camera_target(track, player_vehicle):
 
@@ -79,6 +91,7 @@ func assign_camera_target(track, player_vehicle):
 
 	if camera_rig:
 		camera_rig.target = player_vehicle
+
 
 func play_transition():
 	await transition.fade_in(2.0)

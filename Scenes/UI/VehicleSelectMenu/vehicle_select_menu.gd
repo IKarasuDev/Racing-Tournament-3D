@@ -25,12 +25,13 @@ var ai_locked := false
 var selected_vehicle_scene: PackedScene
 var opponent_vehicle_scene: PackedScene
 
-
 func _ready():
 	randomize()
 	show_player_vehicle(current_index)
 
 	vehicles_ready.connect(_on_vehicles_ready)
+
+
 
 # PLAYER CAROUSEL
 func show_player_vehicle(index):

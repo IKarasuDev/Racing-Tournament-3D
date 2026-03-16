@@ -210,7 +210,7 @@ angular_damp_mode = 1
 angular_damp = 4.0
 script = ExtResource("1_2sd1q")
 vehicle_id = 5
-vehicle_name = "Nissan GTR 35 Nismo"
+vehicle_name = "Nissan GTR R35 Nismo"
 traction_type = "AWD"
 
 [node name="Plane" type="MeshInstance3D" parent="."]
