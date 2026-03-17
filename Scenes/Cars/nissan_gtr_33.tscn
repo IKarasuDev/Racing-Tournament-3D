@@ -196,7 +196,7 @@ shadow_mesh = SubResource("ArrayMesh_uam2g")
 [sub_resource type="BoxShape3D" id="BoxShape3D_vjx0i"]
 size = Vector3(1.8754883, 0.9555664, 3.7035599)
 
-[node name="NissanGTR33" type="VehicleBody3D"]
+[node name="NissanGTR33" type="VehicleBody3D" groups=["vehicle"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mass = 1100.0
 center_of_mass_mode = 1

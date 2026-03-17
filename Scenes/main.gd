@@ -7,6 +7,16 @@ var opponent_scene: PackedScene
 @onready var transition = $Transition
 
 
+var tracks = [
+	"res://Scenes/Track1/track_1.tscn",
+	"res://Scenes/Track2/track_2.tscn",
+	"res://Scenes/Track3/track_3.tscn",
+	"res://Scenes/Track4/track_4.tscn"
+]
+
+var current_track_index := 0
+
+
 func _ready():
 	load_vehicle_selection()
 
@@ -14,7 +24,6 @@ func _ready():
 func load_vehicle_selection():
 
 	var selection_scene = load("res://Scenes/UI/VehicleSelectMenu/vehicle_select_menu.tscn").instantiate()
-
 	scene_container.add_child(selection_scene)
 
 	selection_scene.vehicles_ready.connect(_on_vehicles_ready)
@@ -25,74 +34,65 @@ func _on_vehicles_ready(player_sc, player_name, player_id, opponent_sc, opponent
 	player_scene = player_sc
 	opponent_scene = opponent_sc
 
-	print("Loading Track 1...")
+	RaceManager.setup_race(
+		{
+			"scene": player_sc,
+			"name": player_name,
+			"id": player_id
+		},
+		{
+			"scene": opponent_sc,
+			"name": opponent_name,
+			"id": opponent_id
+		}
+	)
+
+	current_track_index = 0
 	start_race()
 
 
 func start_race():
 
-	await get_tree().create_timer(2).timeout
-
-	await transition.fade_in(2.0)
+	await get_tree().create_timer(1.5).timeout
+	await transition.fade_in(1.5)
 
 	load_track()
 
-	await transition.fade_out(1.5)
+	await transition.fade_out(1.0)
 
 
 func load_track():
 
+	# limpiar escena actual
 	for c in scene_container.get_children():
 		c.queue_free()
 
-	var track = load("res://Scenes/Track1/track_1.tscn").instantiate()
+	# verificar si hay más pistas
+	if current_track_index >= tracks.size():
+		print("Tournament finished")
+		return
+
+	var track_path = tracks[current_track_index]
+	var track = load(track_path).instantiate()
 
 	scene_container.add_child(track)
 
-	spawn_vehicles(track)
+	# conectar señal de fin de carrera
+	if track.has_signal("race_finished_signal"):
+		track.race_finished_signal.connect(_on_race_finished)
+
+	# enviar autos
+	track.setup_race(player_scene, opponent_scene)
 
 
-func spawn_vehicles(track):
+func _on_race_finished():
 
-	var player_spawn = track.get_node("PlayerSpawn")
-	var ai_spawn = track.get_node("AISpawn")
+	print("Track finished:", current_track_index)
 
-	var player_vehicle = player_scene.instantiate()
-	var ai_vehicle = opponent_scene.instantiate()
+	current_track_index += 1
 
-	track.add_child(player_vehicle)
-	track.add_child(ai_vehicle)
+	await transition.fade_in(1.5)
 
-	player_vehicle.global_position = player_spawn.global_position
-	player_vehicle.global_rotation = player_spawn.global_rotation
+	load_track()
 
-	ai_vehicle.global_position = ai_spawn.global_position
-	ai_vehicle.global_rotation = ai_spawn.global_rotation
-
-	# CONTROL MODES
-	player_vehicle.player_control = true
-	player_vehicle.ai_control = false
-
-	ai_vehicle.player_control = false
-	ai_vehicle.ai_control = true
-
-	print("Player spawned:", player_vehicle.vehicle_name)
-	print("AI spawned:", ai_vehicle.vehicle_name)
-
-	print("Player control:", player_vehicle.player_control)
-	print("AI control:", ai_vehicle.ai_control)
-
-	assign_camera_target(track, player_vehicle)
-
-
-func assign_camera_target(track, player_vehicle):
-
-	var camera_rig = track.get_node("CameraRig")
-
-	if camera_rig:
-		camera_rig.target = player_vehicle
-
-
-func play_transition():
-	await transition.fade_in(2.0)
-	await transition.fade_out(1.5)
+	await transition.fade_out(1.0)

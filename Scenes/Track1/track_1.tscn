@@ -27,9 +27,8 @@ directional_shadow_fade_start = 0.0
 directional_shadow_max_distance = 8192.0
 sky_mode = 1
 
-[node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+[node name="CameraRig" type="Node3D" parent="."]
 script = ExtResource("6_j6pps")
-target = NodePath("")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraRig"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, 0)
@@ -58,9 +57,8 @@ debug_color = Color(1, 1, 0, 1)
 wait_time = 10.0
 one_shot = true
 
-[node name="TrackRecorder" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="TrackRecorder" type="Node" parent="."]
 script = ExtResource("9_uhq1k")
-player = NodePath("")
 
 [node name="Track" type="Node" parent="."]
 

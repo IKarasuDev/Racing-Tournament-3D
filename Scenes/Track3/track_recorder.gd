@@ -2,7 +2,7 @@ extends Node
 
 @export var player: VehicleBody3D
 @export var record_interval := 0.1
-@export var save_path := "user://track1_racing_line.json"
+@export var save_path := "user://track3_racing_line.json"
 
 var recording := false
 var timer := 0.0

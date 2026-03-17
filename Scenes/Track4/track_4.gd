@@ -5,7 +5,7 @@ signal race_finished_signal
 @onready var race_timer = $RaceTimer
 @onready var track_recorder = $TrackRecorder
 
-@export var raceline_file := "user://track1_racing_line.json"
+@export var raceline_file := "user://track4_racing_line.json"
 @export var enable_recording := false
 
 var race_started := false

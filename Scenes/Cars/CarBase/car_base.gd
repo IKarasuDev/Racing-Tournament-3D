@@ -32,7 +32,6 @@ var brake_duration := 0.6
 		ai_control = value
 		if value:
 			print("AI mode enabled for:", vehicle_name)
-			load_track()
 
 
 # IA TRACK
@@ -82,7 +81,7 @@ func find_closest_point():
 	for i in racing_line.size():
 
 		var p = racing_line[i]
-		var pos = Vector3(p.x, p.y, p.z)
+		var pos = Vector3(p["x"], p["y"], p["z"]) 
 
 		var d = global_position.distance_to(pos)
 
@@ -137,7 +136,7 @@ func ai_drive():
 	var target_index = (current_point + lookahead) % racing_line.size()
 	var point = racing_line[target_index]
 
-	var target = Vector3(point.x, point.y, point.z)
+	var target = Vector3(point["x"], point["y"], point["z"])
 
 	var dir = target - global_position
 	dir.y = 0
@@ -199,3 +198,15 @@ func ai_drive():
 	if speed < 1.5:
 		engine_force = max_engine_force * 0.4
 		steering = -steering
+
+func set_raceline(data):
+
+	racing_line = data
+
+	if racing_line.is_empty():
+		print("Received empty raceline")
+		return
+
+	print("AI received raceline:", racing_line.size(), "points")
+
+	find_closest_point()
