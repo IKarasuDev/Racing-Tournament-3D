@@ -904,4 +904,18 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 285, -0.8, 130)
 [node name="grassFlat96" parent="grass" instance=ExtResource("6_sbd7y")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 315, -0.8, 130)
 
+[node name="UI" type="Node" parent="."]
+
+[node name="ResultLabel" type="Label" parent="UI"]
+offset_top = 128.0
+offset_right = 1152.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 44
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [connection signal="body_entered" from="DeckalFinish/FinishLine" to="." method="_on_finish_line_body_entered"]

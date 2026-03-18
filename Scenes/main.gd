@@ -85,14 +85,34 @@ func load_track():
 	track.setup_race(player_scene, opponent_scene)
 
 
-func _on_race_finished():
+func _on_race_finished(player_won):
 
 	print("Track finished:", current_track_index)
 
-	current_track_index += 1
+	if player_won:
+		current_track_index += 1
 
-	await transition.fade_in(1.5)
+		await transition.fade_in(1.5)
+		load_track()
+		await transition.fade_out(1.0)
+	else:
+		# 🔥 derrota → volver al menú
+		await transition.fade_in(1.5)
 
-	load_track()
+		current_track_index = 0
+		load_vehicle_selection()
 
-	await transition.fade_out(1.0)
+		await transition.fade_out(1.0)
+
+func show_result(text, player_won):
+
+	var label = $UI/ResultLabel
+	label.text = text
+	label.visible = true
+
+	await get_tree().create_timer(3.0).timeout
+
+	if player_won:
+		emit_signal("race_finished_signal", true)
+	else:
+		emit_signal("race_finished_signal", false)

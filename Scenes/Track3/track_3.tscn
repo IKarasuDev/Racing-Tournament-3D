@@ -569,4 +569,18 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -93.
 [node name="AISpawn" type="Marker3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -93.552246, 0.853, 2.121)
 
+[node name="UI" type="Node" parent="."]
+
+[node name="ResultLabel" type="Label" parent="UI"]
+offset_top = 128.0
+offset_right = 1152.0
+offset_bottom = 189.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 44
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [connection signal="body_entered" from="DeckalFinish/FinishLine" to="." method="_on_finish_line_body_entered"]

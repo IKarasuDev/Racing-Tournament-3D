@@ -52,3 +52,28 @@ func resolve_race():
 	print("Winner: ", winner.name)
 	
 	emit_signal("race_finished", winner, loser, results)
+
+func register_player_finish(vehicle):
+
+	# Registrar normalmente
+	register_finish(vehicle)
+
+	# Determinar resultado inmediato
+	var winner
+	var loser
+
+	if finished_order.size() == 1:
+		# El jugador llegó primero
+		winner = vehicle
+		loser = null
+	else:
+		# Ya había alguien -> el jugador perdió
+		winner = finished_order[0]
+		loser = vehicle
+
+	var results = {
+		"player_time": finish_times[vehicle],
+		"winner_time": finish_times.get(winner, 0.0)
+	}
+
+	emit_signal("race_finished", winner, loser, results)

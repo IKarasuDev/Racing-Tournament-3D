@@ -1,5 +1,6 @@
 extends Node3D
-signal race_finished_signal
+
+signal race_finished_signal(player_won)
 
 @onready var finish_line = $DeckalFinish/FinishLine
 @onready var race_timer = $RaceTimer
@@ -44,18 +45,20 @@ func _on_finish_line_body_entered(body):
 	if !body.is_in_group("vehicle"):
 		return
 
-	# INICIO (solo player)
+	# INICIO
 	if !race_started and body.is_in_group("player"):
 		start_race()
 		return
 
-	# 🔥 BLOQUEO: evita finish inmediato (bug 0.0s)
 	if race_just_started:
 		return
 
-	# FINISH real
-	RaceManager.register_finish(body)
-
+	# 🔥 SI ES PLAYER → RESOLVER INMEDIATO
+	if body.is_in_group("player"):
+		RaceManager.register_player_finish(body)
+	else:
+		# IA solo registra tiempo
+		RaceManager.register_finish(body)
 
 func start_race():
 
@@ -88,16 +91,35 @@ func _on_race_finished(winner, loser, results):
 
 	race_finished = true
 
-	print("Race Finished (Track notified)")
-	print("Winner:", winner.name)
-	print("Times:", results)
+	var player_won = (winner != null and winner.is_in_group("player"))
 
-	if enable_recording and track_recorder:
-		track_recorder.stop_recording()
-		track_recorder.save_track()
+	if player_won:
+		print("Winner:", player_vehicle.name)
+		show_result("Winner: " + player_vehicle.name, true)
+	else:
+		print("Loser:", player_vehicle.name)
+		show_result("Loser: " + player_vehicle.name, false)
 
-	emit_signal("race_finished_signal")
+func show_result(text, player_won):
 
+	var label = $UI/ResultLabel
+	
+	# asegurar estado inicial
+	label.visible = false
+
+	# ⏱️ esperar 1 segundo antes de mostrar
+	await get_tree().create_timer(0.5).timeout
+
+	label.text = text
+	label.visible = true
+
+	# ⏱️ esperar 2 segundos más antes de continuar
+	await get_tree().create_timer(3.0).timeout
+
+	if player_won:
+		emit_signal("race_finished_signal", true)
+	else:
+		emit_signal("race_finished_signal", false)
 
 func setup_race(player_scene, opponent_scene):
 
