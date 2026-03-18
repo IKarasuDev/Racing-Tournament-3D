@@ -173,6 +173,12 @@ horizontal_alignment = 1
 layout_mode = 2
 horizontal_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1.9853935e-07, 0.121907435, 0.17359895, 1)
+
 [connection signal="pressed" from="HBoxContainer/PlayerSection/VBoxContainer/HBoxContainer/LeftButton" to="." method="previous_vehicle"]
 [connection signal="pressed" from="HBoxContainer/PlayerSection/VBoxContainer/HBoxContainer/SelectButton" to="." method="select_vehicle"]
 [connection signal="pressed" from="HBoxContainer/PlayerSection/VBoxContainer/HBoxContainer/RightButton" to="." method="next_vehicle"]

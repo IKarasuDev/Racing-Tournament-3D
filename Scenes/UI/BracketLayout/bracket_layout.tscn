@@ -1,0 +1,242 @@
+[gd_scene load_steps=3 format=3 uid="uid://bllub7cam2ler"]
+
+[ext_resource type="Script" uid="uid://scgplat84372" path="res://Scenes/UI/BracketLayout/bracketUI.gd" id="1_lk36d"]
+[ext_resource type="Texture2D" uid="uid://8ff3s2ehoec5" path="res://Sprites/Icons/trofeo.png" id="1_nwx4b"]
+
+[node name="BracketLayout" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lk36d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1.9853935e-07, 0.121907435, 0.17359895, 1)
+
+[node name="Column1" type="Node" parent="ColorRect"]
+
+[node name="Slot1C1" type="ColorRect" parent="ColorRect/Column1"]
+offset_left = 64.0
+offset_top = 80.0
+offset_right = 256.0
+offset_bottom = 120.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P1" type="Label" parent="ColorRect/Column1/Slot1C1"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot2C1" type="ColorRect" parent="ColorRect/Column1"]
+offset_left = 64.0
+offset_top = 136.0
+offset_right = 256.0
+offset_bottom = 176.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P2" type="Label" parent="ColorRect/Column1/Slot2C1"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3C1" type="ColorRect" parent="ColorRect/Column1"]
+offset_left = 64.0
+offset_top = 208.0
+offset_right = 256.0
+offset_bottom = 248.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P3" type="Label" parent="ColorRect/Column1/Slot3C1"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot4C1" type="ColorRect" parent="ColorRect/Column1"]
+offset_left = 64.0
+offset_top = 264.0
+offset_right = 256.0
+offset_bottom = 304.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P4" type="Label" parent="ColorRect/Column1/Slot4C1"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot5C1" type="ColorRect" parent="ColorRect/Column1"]
+offset_left = 64.0
+offset_top = 336.0
+offset_right = 256.0
+offset_bottom = 376.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P5" type="Label" parent="ColorRect/Column1/Slot5C1"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot6C1" type="ColorRect" parent="ColorRect/Column1"]
+offset_left = 64.0
+offset_top = 392.0
+offset_right = 256.0
+offset_bottom = 432.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P6" type="Label" parent="ColorRect/Column1/Slot6C1"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot7C1" type="ColorRect" parent="ColorRect/Column1"]
+offset_left = 64.0
+offset_top = 464.0
+offset_right = 256.0
+offset_bottom = 504.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P7" type="Label" parent="ColorRect/Column1/Slot7C1"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot8C1" type="ColorRect" parent="ColorRect/Column1"]
+offset_left = 64.0
+offset_top = 520.0
+offset_right = 256.0
+offset_bottom = 560.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P8" type="Label" parent="ColorRect/Column1/Slot8C1"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Column2" type="Node" parent="ColorRect"]
+
+[node name="Slot1" type="ColorRect" parent="ColorRect/Column2"]
+offset_left = 320.0
+offset_top = 104.0
+offset_right = 512.0
+offset_bottom = 152.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P1C2" type="Label" parent="ColorRect/Column2/Slot1"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 48.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot2" type="ColorRect" parent="ColorRect/Column2"]
+offset_left = 320.0
+offset_top = 232.0
+offset_right = 512.0
+offset_bottom = 280.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P2C2" type="Label" parent="ColorRect/Column2/Slot2"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 48.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3" type="ColorRect" parent="ColorRect/Column2"]
+offset_left = 320.0
+offset_top = 360.0
+offset_right = 512.0
+offset_bottom = 408.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P3C2" type="Label" parent="ColorRect/Column2/Slot3"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 48.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot4" type="ColorRect" parent="ColorRect/Column2"]
+offset_left = 320.0
+offset_top = 488.0
+offset_right = 512.0
+offset_bottom = 536.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P4C2" type="Label" parent="ColorRect/Column2/Slot4"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 48.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Column3" type="Node" parent="ColorRect"]
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/Column3"]
+offset_left = 576.0
+offset_top = 160.0
+offset_right = 768.0
+offset_bottom = 224.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P1C3" type="Label" parent="ColorRect/Column3/ColorRect"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 64.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot6" type="ColorRect" parent="ColorRect/Column3"]
+offset_left = 576.0
+offset_top = 424.0
+offset_right = 768.0
+offset_bottom = 488.0
+color = Color(0, 0.28228116, 0.26370612, 1)
+
+[node name="P2C3" type="Label" parent="ColorRect/Column3/Slot6"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 64.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Column4" type="Node" parent="ColorRect"]
+
+[node name="Slot5" type="ColorRect" parent="ColorRect/Column4"]
+offset_left = 832.0
+offset_top = 288.0
+offset_right = 1024.0
+offset_bottom = 352.0
+color = Color(1.2032688e-06, 0.45921814, 0.42933044, 1)
+
+[node name="Champion" type="Label" parent="ColorRect/Column4/Slot5"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 64.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Trofeo" type="Sprite2D" parent="."]
+position = Vector2(928, 224)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_nwx4b")

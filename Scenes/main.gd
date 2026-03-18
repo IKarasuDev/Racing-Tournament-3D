@@ -6,6 +6,8 @@ var opponent_scene: PackedScene
 @onready var scene_container = $SceneContainer
 @onready var transition = $Transition
 
+var tournament_controller
+var vehicles_cache: Array
 
 var tracks = [
 	"res://Scenes/Track1/track_1.tscn",
@@ -20,35 +22,52 @@ var current_track_index := 0
 func _ready():
 	load_vehicle_selection()
 
-
 func load_vehicle_selection():
 
 	var selection_scene = load("res://Scenes/UI/VehicleSelectMenu/vehicle_select_menu.tscn").instantiate()
 	scene_container.add_child(selection_scene)
 
-	selection_scene.vehicles_ready.connect(_on_vehicles_ready)
+	vehicles_cache = selection_scene.vehicles
 
+	selection_scene.vehicles_ready.connect(_on_vehicles_ready)
 
 func _on_vehicles_ready(player_sc, player_name, player_id, opponent_sc, opponent_name, opponent_id):
 
-	player_scene = player_sc
-	opponent_scene = opponent_sc
+	tournament_controller = load("res://Singletons/TournamentController/TournamentController.gd").new()
 
-	RaceManager.setup_race(
-		{
-			"scene": player_sc,
-			"name": player_name,
-			"id": player_id
-		},
-		{
-			"scene": opponent_sc,
-			"name": opponent_name,
-			"id": opponent_id
-		}
-	)
+	var player_data = {
+		"scene": player_sc,
+		"name": player_name,
+		"id": player_id
+	}
 
-	current_track_index = 0
-	start_race()
+	var opponent_data = {
+		"scene": opponent_sc,
+		"name": opponent_name,
+		"id": opponent_id
+	}
+
+	tournament_controller.start_tournament(player_data, vehicles_cache, opponent_data)
+
+	await get_tree().create_timer(2.0).timeout
+
+	await transition.fade_in(1.0)
+
+	show_bracket()
+
+	await transition.fade_out(1.0)
+
+func show_bracket():
+
+	for c in scene_container.get_children():
+		c.queue_free()
+
+	var bracket_scene = load("res://Scenes/UI/BracketLayout/bracket_layout.tscn").instantiate()
+	scene_container.add_child(bracket_scene)
+
+	var first_round = tournament_controller.get_first_round()
+
+	bracket_scene.setup(first_round)
 
 
 func start_race():

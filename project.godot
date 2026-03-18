@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 WorldManager="*res://Singletons/WorldManager/WorldManager.gd"
 RaceManager="*res://Singletons/RaceManager/RaceManager.gd"
+TournamentController="*res://Singletons/TournamentController/TournamentController.gd"
+Bracket_manager="*res://Singletons/BracketManager/BracketManager.gd"
 
 [global_group]
 

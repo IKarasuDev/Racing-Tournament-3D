@@ -145,7 +145,6 @@ func select_vehicle():
 
 #Checking Cars
 func _on_vehicles_ready(player_scene, player_name, player_id, opponent_scene, opponent_name, opponent_id):
-
 	print("---- VEHICLES READY ----")
 
 	print("Player Scene: ", player_scene)
