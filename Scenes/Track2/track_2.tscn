@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://wso201gep61u"]
+[gd_scene load_steps=10 format=3 uid="uid://wso201gep61u"]
 
 [ext_resource type="PackedScene" uid="uid://cn3tmio88d6fv" path="res://Scenes/HexagonesTrack/TrackFlatStraight.tscn" id="1_kqmmy"]
 [ext_resource type="Script" uid="uid://cnkvlu3ysk8d5" path="res://Scenes/Track2/track_2.gd" id="1_ynqvi"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rs3om"]
 size = Vector3(1, 5.397583, 27.444977)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynqvi"]
+size = Vector3(1, 15.482544, 30.252197)
 
 [node name="Track2" type="Node3D"]
 script = ExtResource("1_ynqvi")
@@ -1259,10 +1262,10 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -525, -0.7, 77.7)
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -405, -0.7, 77.7)
 
 [node name="PlayerSpawn" type="Marker3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14, 0.853, -1.879)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0.853, -1.879)
 
 [node name="AISpawn" type="Marker3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14, 0.853, 2.121)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0.853, 2.121)
 
 [node name="DeckalFinish" parent="." instance=ExtResource("2_ahm3c")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 20, -0.7, 0)
@@ -1296,4 +1299,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="Checkpoint" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -1.3262539, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint"]
+shape = SubResource("BoxShape3D_ynqvi")
+debug_color = Color(0, 1, 0, 1)
+
 [connection signal="body_entered" from="DeckalFinish/FinishLine" to="." method="_on_finish_line_body_entered"]
+[connection signal="body_entered" from="Checkpoint" to="." method="_on_checkpoint_body_entered"]

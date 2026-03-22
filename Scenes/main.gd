@@ -83,13 +83,14 @@ func start_race():
 
 func load_track():
 
-	# limpiar escena actual
 	for c in scene_container.get_children():
 		c.queue_free()
 
-	# verificar si hay más pistas
 	if current_track_index >= tracks.size():
 		print("Tournament finished")
+
+		# 🔥 MOSTRAR BRACKET FINAL CON CAMPEÓN
+		show_bracket()
 		return
 
 	var track_path = tracks[current_track_index]
@@ -97,7 +98,6 @@ func load_track():
 
 	scene_container.add_child(track)
 
-	# conectar señal de fin de carrera
 	if track.has_signal("race_finished_signal"):
 		track.race_finished_signal.connect(_on_race_finished)
 
@@ -110,7 +110,6 @@ func load_track():
 	var player_data = match.participant_a.data
 	var opponent_data = match.participant_b.data
 
-	# Detectar cuál es el player realmente
 	if player_data.id != tournament_controller.participants[0].id:
 		var temp = player_data
 		player_data = opponent_data
@@ -121,25 +120,25 @@ func load_track():
 
 	track.setup_race(player_scene, opponent_scene)
 
-
 func _on_race_finished(player_won):
 
 	print("Track finished:", current_track_index)
 
 	if player_won:
-		current_track_index +=1
+
+		current_track_index += 1
 		tournament_controller.process_player_win()
-		
+
 		await transition.fade_in(1.5)
+
 		show_bracket()
+
 		await transition.fade_out(1.0)
 
 	else:
-		# derrota → menú
 		await transition.fade_in(1.5)
 		current_track_index = 0
 		load_vehicle_selection()
-
 		await transition.fade_out(1.0)
 
 func show_result(text, player_won):

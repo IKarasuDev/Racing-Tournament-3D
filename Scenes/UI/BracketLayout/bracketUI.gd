@@ -23,7 +23,7 @@ extends Control
 	$ColorRect/Column3/Slot6/P2C3
 ]
 
-@onready var labelsChamp = [
+@onready var column4 = [
 	$ColorRect/Column4/Slot5/Champion
 ]
 
@@ -56,3 +56,16 @@ func setup(rounds):
 
 		column3[0].text = r3[0].participant_a.data.name
 		column3[1].text = r3[0].participant_b.data.name
+		
+	# -------- CAMPEÓN (columna 4) --------
+	if rounds.size() > 2:
+
+		var final_round = rounds[2]
+
+		if final_round.size() > 0:
+			var final_match = final_round[0]
+
+			if final_match.winner != null:
+				column4[0].text = final_match.winner.data.name
+			else:
+				column4[0].text = "TBD"

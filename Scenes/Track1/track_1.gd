@@ -3,7 +3,7 @@ extends Node3D
 signal race_finished_signal(player_won)
 
 @onready var finish_line = $DeckalFinish/FinishLine
-@onready var race_timer = $RaceTimer
+@onready var checkpoint = $Checkpoint
 @onready var track_recorder = $TrackRecorder
 
 @export var raceline_file := "user://track1_racing_line.json"
@@ -11,11 +11,12 @@ signal race_finished_signal(player_won)
 
 var race_started := false
 var race_finished := false
-var race_just_started := false  # 🔥 FIX CLAVE
 
 var player_vehicle
 var ai_vehicle
 var raceline_data = []
+
+var can_finish := false  # 🔥 SOLO se activa al pasar checkpoint
 
 
 func _ready():
@@ -23,8 +24,8 @@ func _ready():
 	if finish_line:
 		finish_line.body_entered.connect(_on_finish_line_body_entered)
 
-	if race_timer:
-		race_timer.timeout.connect(_on_timer_unlock)
+	if checkpoint:
+		checkpoint.body_entered.connect(_on_checkpoint_body_entered)
 
 	RaceManager.race_finished.connect(_on_race_finished)
 
@@ -37,6 +38,26 @@ func _ready():
 		print("Raceline loaded:", raceline_data.size(), "points")
 
 
+# =========================
+# CHECKPOINT (CLAVE)
+# =========================
+func _on_checkpoint_body_entered(body):
+
+	if !race_started:
+		return
+
+	if !body.is_in_group("vehicle"):
+		return
+
+	# puedes hacerlo solo para player si quieres
+	if body.is_in_group("player"):
+		can_finish = true
+		print("Checkpoint passed → can_finish = true")
+
+
+# =========================
+# FINISH LINE
+# =========================
 func _on_finish_line_body_entered(body):
 
 	if race_finished:
@@ -45,25 +66,30 @@ func _on_finish_line_body_entered(body):
 	if !body.is_in_group("vehicle"):
 		return
 
-	# INICIO
+	# START DE LA CARRERA
 	if !race_started and body.is_in_group("player"):
 		start_race()
 		return
 
-	if race_just_started:
+	# 🔥 VALIDACIÓN REAL
+	if !can_finish:
+		print("Finish blocked (no checkpoint)")
 		return
 
-	# 🔥 SI ES PLAYER → RESOLVER INMEDIATO
+	# FIN
 	if body.is_in_group("player"):
 		RaceManager.register_player_finish(body)
 	else:
-		# IA solo registra tiempo
 		RaceManager.register_finish(body)
 
+
+# =========================
+# START
+# =========================
 func start_race():
 
 	race_started = true
-	race_just_started = true  # 🔥 activar bloqueo temporal
+	can_finish = false  # 🔥 reset obligatorio
 
 	print("Race Started")
 
@@ -72,18 +98,10 @@ func start_race():
 	if enable_recording and track_recorder:
 		track_recorder.start_recording()
 
-	finish_line.monitoring = false
-	race_timer.start()
 
-
-func _on_timer_unlock():
-
-	finish_line.monitoring = true
-	race_just_started = false  # 🔥 ahora sí puede terminar
-
-	print("Finish line unlocked")
-
-
+# =========================
+# RESULTADO
+# =========================
 func _on_race_finished(winner, loser, results):
 
 	if race_finished:
@@ -100,37 +118,43 @@ func _on_race_finished(winner, loser, results):
 		print("Loser:", player_vehicle.name)
 		show_result("Loser: " + player_vehicle.name, false)
 
+
 func show_result(text, player_won):
 
 	var label = $UI/ResultLabel
 	
-	# asegurar estado inicial
 	label.visible = false
 
-	# ⏱️ esperar 1 segundo antes de mostrar
 	await get_tree().create_timer(0.5).timeout
 
 	label.text = text
 	label.visible = true
 
-	# ⏱️ esperar 2 segundos más antes de continuar
 	await get_tree().create_timer(3.0).timeout
 
-	if player_won:
-		emit_signal("race_finished_signal", true)
-	else:
-		emit_signal("race_finished_signal", false)
+	emit_signal("race_finished_signal", player_won)
 
+
+# =========================
+# SETUP RACE
+# =========================
 func setup_race(player_scene, opponent_scene):
 
 	var player_spawn = $PlayerSpawn
 	var ai_spawn = $AISpawn
 
+	# instanciar primero
 	player_vehicle = player_scene.instantiate()
 	ai_vehicle = opponent_scene.instantiate()
 
 	add_child(player_vehicle)
 	add_child(ai_vehicle)
+
+	# 🔥 ahora sí setup correcto
+	RaceManager.setup_race(
+		player_vehicle.vehicle_id,
+		ai_vehicle.vehicle_id
+	)
 
 	# posiciones
 	player_vehicle.global_position = player_spawn.global_position
@@ -139,20 +163,20 @@ func setup_race(player_scene, opponent_scene):
 	ai_vehicle.global_position = ai_spawn.global_position
 	ai_vehicle.global_rotation = ai_spawn.global_rotation
 
-	# control correcto
+	# control
 	player_vehicle.player_control = true
 	player_vehicle.ai_control = false
 
 	ai_vehicle.player_control = false
 	ai_vehicle.ai_control = true
 
-	# 🔥 GRUPOS (CLAVE para detección)
+	# grupos
 	player_vehicle.add_to_group("player")
 	player_vehicle.add_to_group("vehicle")
 
 	ai_vehicle.add_to_group("vehicle")
 
-	# recorder (opcional)
+	# recorder
 	if track_recorder:
 		track_recorder.player = player_vehicle
 		track_recorder.save_path = raceline_file
@@ -169,6 +193,9 @@ func setup_race(player_scene, opponent_scene):
 	assign_camera(player_vehicle)
 
 
+# =========================
+# CAMERA
+# =========================
 func assign_camera(player_vehicle):
 
 	var camera_rig = $CameraRig

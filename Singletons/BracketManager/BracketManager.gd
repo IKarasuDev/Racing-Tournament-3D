@@ -20,7 +20,6 @@ class Match:
 		participant_a = a
 		participant_b = b
 
-
 # 🔥 Crear bracket inicial
 func create_bracket(participants_data: Array):
 
@@ -41,7 +40,7 @@ func create_bracket(participants_data: Array):
 
 func report_player_win(player_id):
 
-	var current_round = rounds[0]
+	var current_round = rounds[rounds.size() - 1]
 
 	for m in current_round:
 
@@ -61,7 +60,7 @@ func report_player_win(player_id):
 
 func simulate_remaining_matches():
 
-	var current_round = rounds[0]
+	var current_round = rounds[rounds.size() - 1]
 
 	for m in current_round:
 
@@ -76,15 +75,23 @@ func simulate_remaining_matches():
 
 func advance_round():
 
-	var current_round = rounds[0]
+	var current_round = rounds[rounds.size() - 1]
 	var winners: Array = []
 
 	for m in current_round:
-		winners.append(m.winner.data)
+		if m.winner == null:
+			push_error("Match without winner before advancing round")
+			return
+		
+		winners.append(m.winner.data) 
 
 	var next_round: Array = []
 
 	for i in range(0, winners.size(), 2):
+
+		if i + 1 >= winners.size():
+			push_error("Odd number of winners in bracket")
+			return
 
 		var p1 = Participant.new(winners[i])
 		var p2 = Participant.new(winners[i + 1])

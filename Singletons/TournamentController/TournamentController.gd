@@ -89,3 +89,14 @@ func process_player_win():
 func get_current_round():
 
 	return bracket.rounds[bracket.rounds.size() - 1]
+	
+
+func get_champion():
+
+	var last_round = bracket.rounds[bracket.rounds.size() - 1]
+
+	if last_round.size() == 1:
+		var match = last_round[0]
+		return match.winner
+
+	return null
