@@ -91,7 +91,7 @@ func _on_race_finished(winner, loser, results):
 
 	race_finished = true
 
-	var player_won = (winner != null and winner.is_in_group("player"))
+	var player_won = (winner != null and winner == player_vehicle.vehicle_id)
 
 	if player_won:
 		print("Winner:", player_vehicle.name)

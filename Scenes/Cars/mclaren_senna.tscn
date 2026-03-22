@@ -208,7 +208,7 @@ angular_damp_mode = 1
 angular_damp = 4.0
 script = ExtResource("1_s5ff6")
 vehicle_id = 2
-vehicle_name = "Mclaren Senna"
+vehicle_name = "Paganni"
 traction_type = "AWD"
 
 [node name="Plane" type="MeshInstance3D" parent="."]

@@ -1,7 +1,7 @@
 extends Node
 
 signal race_started
-signal race_finished(winner, loser, results)
+signal race_finished(winner_id, loser_id, results)
 
 var player_data
 var ai_data
@@ -24,56 +24,57 @@ func start_race():
 	
 
 func register_finish(vehicle):
-	#Evitar duplicados
-	if vehicle in finish_times:
+
+	var vehicle_id = vehicle.vehicle_id
+
+	if vehicle_id in finish_times:
 		return
-	
+
 	var current_time = Time.get_ticks_msec() / 1000
 	var race_time = current_time - start_time
-	
-	finish_times[vehicle] = race_time
-	finished_order.append(vehicle)
-	
+
+	finish_times[vehicle_id] = race_time
+	finished_order.append(vehicle_id)
+
 	print(vehicle.name, " finished in ", race_time)
-	
+
 	if finished_order.size() == 2:
 		resolve_race()
-		
+
 
 func resolve_race():
-	var winner = finished_order[0]
-	var loser = finished_order[1]
-	
+
+	var winner_id = finished_order[0]
+	var loser_id = finished_order[1]
+
 	var results = {
-		"winner_timer": finish_times[winner],
-		"loser_time": finish_times[loser]
+		"winner_time": finish_times[winner_id],
+		"loser_time": finish_times[loser_id]
 	}
-	
-	print("Winner: ", winner.name)
-	
-	emit_signal("race_finished", winner, loser, results)
+
+	print("Winner ID: ", winner_id)
+
+	emit_signal("race_finished", winner_id, loser_id, results)
 
 func register_player_finish(vehicle):
 
-	# Registrar normalmente
 	register_finish(vehicle)
 
-	# Determinar resultado inmediato
-	var winner
-	var loser
+	var vehicle_id = vehicle.vehicle_id
+
+	var winner_id
+	var loser_id
 
 	if finished_order.size() == 1:
-		# El jugador llegó primero
-		winner = vehicle
-		loser = null
+		winner_id = vehicle_id
+		loser_id = null
 	else:
-		# Ya había alguien -> el jugador perdió
-		winner = finished_order[0]
-		loser = vehicle
+		winner_id = finished_order[0]
+		loser_id = vehicle_id
 
 	var results = {
-		"player_time": finish_times[vehicle],
-		"winner_time": finish_times.get(winner, 0.0)
+		"player_time": finish_times[vehicle_id],
+		"winner_time": finish_times.get(winner_id, 0.0)
 	}
 
-	emit_signal("race_finished", winner, loser, results)
+	emit_signal("race_finished", winner_id, loser_id, results)

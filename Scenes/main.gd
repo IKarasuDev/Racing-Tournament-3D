@@ -12,7 +12,6 @@ var vehicles_cache: Array
 var tracks = [
 	"res://Scenes/Track1/track_1.tscn",
 	"res://Scenes/Track2/track_2.tscn",
-	"res://Scenes/Track3/track_3.tscn",
 	"res://Scenes/Track4/track_4.tscn"
 ]
 
@@ -65,9 +64,11 @@ func show_bracket():
 	var bracket_scene = load("res://Scenes/UI/BracketLayout/bracket_layout.tscn").instantiate()
 	scene_container.add_child(bracket_scene)
 
-	var first_round = tournament_controller.get_first_round()
-
-	bracket_scene.setup(first_round)
+	var rounds = tournament_controller.bracket.rounds
+	bracket_scene.setup(rounds)
+	
+	await get_tree().create_timer(3.0).timeout
+	start_race()
 
 
 func start_race():
@@ -100,7 +101,24 @@ func load_track():
 	if track.has_signal("race_finished_signal"):
 		track.race_finished_signal.connect(_on_race_finished)
 
-	# enviar autos
+	var match = tournament_controller.get_player_match()
+
+	if match == null:
+		print("No player match found")
+		return
+
+	var player_data = match.participant_a.data
+	var opponent_data = match.participant_b.data
+
+	# Detectar cuál es el player realmente
+	if player_data.id != tournament_controller.participants[0].id:
+		var temp = player_data
+		player_data = opponent_data
+		opponent_data = temp
+
+	player_scene = player_data.scene
+	opponent_scene = opponent_data.scene
+
 	track.setup_race(player_scene, opponent_scene)
 
 
@@ -109,15 +127,16 @@ func _on_race_finished(player_won):
 	print("Track finished:", current_track_index)
 
 	if player_won:
-		current_track_index += 1
-
+		current_track_index +=1
+		tournament_controller.process_player_win()
+		
 		await transition.fade_in(1.5)
-		load_track()
+		show_bracket()
 		await transition.fade_out(1.0)
-	else:
-		# 🔥 derrota → volver al menú
-		await transition.fade_in(1.5)
 
+	else:
+		# derrota → menú
+		await transition.fade_in(1.5)
 		current_track_index = 0
 		load_vehicle_selection()
 
