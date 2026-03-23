@@ -100,3 +100,9 @@ func get_champion():
 		return match.winner
 
 	return null
+
+
+func reset():
+	bracket = null
+	participants.clear()
+	all_vehicles.clear()

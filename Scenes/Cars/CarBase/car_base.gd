@@ -94,7 +94,7 @@ func find_closest_point():
 	print("AI starting at point:", current_point)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 
 	if player_control:
 		player_drive()

@@ -16,15 +16,15 @@ var player_vehicle
 var ai_vehicle
 var raceline_data = []
 
-var can_finish := false  # 🔥 SOLO se activa al pasar checkpoint
+var can_finish := false 
 
 
 func _ready():
 
-	if finish_line:
+	if finish_line and not finish_line.body_entered.is_connected(_on_finish_line_body_entered):
 		finish_line.body_entered.connect(_on_finish_line_body_entered)
 
-	if checkpoint:
+	if checkpoint and not checkpoint.body_entered.is_connected(_on_checkpoint_body_entered):
 		checkpoint.body_entered.connect(_on_checkpoint_body_entered)
 
 	RaceManager.race_finished.connect(_on_race_finished)
@@ -50,7 +50,7 @@ func _on_checkpoint_body_entered(body):
 		return
 
 	# puedes hacerlo solo para player si quieres
-	if body.is_in_group("player"):
+	if body.is_in_group("vehicle"):
 		can_finish = true
 		print("Checkpoint passed → can_finish = true")
 
@@ -77,8 +77,8 @@ func _on_finish_line_body_entered(body):
 		return
 
 	# FIN
-	if body.is_in_group("player"):
-		RaceManager.register_player_finish(body)
+	if body.is_in_group("vehicle"):
+		RaceManager.register_finish(body)
 	else:
 		RaceManager.register_finish(body)
 
@@ -102,7 +102,7 @@ func start_race():
 # =========================
 # RESULTADO
 # =========================
-func _on_race_finished(winner, loser, results):
+func _on_race_finished(winner, _loser, _results):
 
 	if race_finished:
 		return
@@ -113,10 +113,10 @@ func _on_race_finished(winner, loser, results):
 
 	if player_won:
 		print("Winner:", player_vehicle.name)
-		show_result("Winner: " + player_vehicle.name, true)
+		show_result("Winner: " + player_vehicle.vehicle_name, true)
 	else:
 		print("Loser:", player_vehicle.name)
-		show_result("Loser: " + player_vehicle.name, false)
+		show_result("Loser: " + player_vehicle.vehicle_name, false)
 
 
 func show_result(text, player_won):
@@ -196,9 +196,9 @@ func setup_race(player_scene, opponent_scene):
 # =========================
 # CAMERA
 # =========================
-func assign_camera(player_vehicle):
+func assign_camera(target_vehicle):
 
 	var camera_rig = $CameraRig
 
 	if camera_rig:
-		camera_rig.target = player_vehicle
+		camera_rig.target = target_vehicle

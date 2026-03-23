@@ -73,6 +73,9 @@ func show_bracket():
 
 func start_race():
 
+	if tournament_controller == null or tournament_controller.bracket == null:
+		return
+
 	await get_tree().create_timer(1.5).timeout
 	await transition.fade_in(1.5)
 
@@ -122,23 +125,40 @@ func load_track():
 
 func _on_race_finished(player_won):
 
-	print("Track finished:", current_track_index)
-
 	if player_won:
 
 		current_track_index += 1
 		tournament_controller.process_player_win()
 
 		await transition.fade_in(1.5)
-
 		show_bracket()
-
 		await transition.fade_out(1.0)
+
+		# se acaba el torneo
+		if current_track_index >= tracks.size():
+
+			await get_tree().create_timer(3.0).timeout
+
+			await transition.fade_in(1.5)
+
+			# reset
+			tournament_controller.reset()
+			current_track_index = 0
+
+			load_vehicle_selection()
+
+			await transition.fade_out(1.0)
+
+			return  #corta
 
 	else:
 		await transition.fade_in(1.5)
+
+		tournament_controller.reset()
 		current_track_index = 0
+
 		load_vehicle_selection()
+
 		await transition.fade_out(1.0)
 
 func show_result(text, player_won):

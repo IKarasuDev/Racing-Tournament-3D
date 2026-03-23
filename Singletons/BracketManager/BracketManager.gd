@@ -83,15 +83,16 @@ func advance_round():
 			push_error("Match without winner before advancing round")
 			return
 		
-		winners.append(m.winner.data) 
+		winners.append(m.winner.data)
+
+	#Si solo queda un auto, no avanzar
+	if winners.size() == 1:
+		print("Tournament finished. Champion:", winners[0].name)
+		return
 
 	var next_round: Array = []
 
 	for i in range(0, winners.size(), 2):
-
-		if i + 1 >= winners.size():
-			push_error("Odd number of winners in bracket")
-			return
 
 		var p1 = Participant.new(winners[i])
 		var p2 = Participant.new(winners[i + 1])
