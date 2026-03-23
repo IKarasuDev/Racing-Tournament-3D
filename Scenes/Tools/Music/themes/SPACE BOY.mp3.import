@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://nei47jbamo47"
+path="res://.godot/imported/SPACE BOY.mp3-bb1cc56b41c8181c3a52ffdb409bf178.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Tools/Music/themes/SPACE BOY.mp3"
+dest_files=["res://.godot/imported/SPACE BOY.mp3-bb1cc56b41c8181c3a52ffdb409bf178.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

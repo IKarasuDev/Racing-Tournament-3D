@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b13esb8vtb4r0"
+path="res://.godot/imported/DON'T STOP THE MUSIC.mp3-a90e752e235c8b5e2c63afd2fbe8ca11.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Tools/Music/themes/DON'T STOP THE MUSIC.mp3"
+dest_files=["res://.godot/imported/DON'T STOP THE MUSIC.mp3-a90e752e235c8b5e2c63afd2fbe8ca11.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

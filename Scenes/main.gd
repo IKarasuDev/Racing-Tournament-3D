@@ -5,6 +5,7 @@ var opponent_scene: PackedScene
 
 @onready var scene_container = $SceneContainer
 @onready var transition = $Transition
+@onready var Music = $AudioStreamPlayer
 
 var tournament_controller
 var vehicles_cache: Array

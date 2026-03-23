@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://dcx3q1t3td8b"]
+[gd_scene load_steps=14 format=4 uid="uid://dcx3q1t3td8b"]
 
 [ext_resource type="Script" uid="uid://dsg852cvfmftv" path="res://Scenes/Cars/CarBase/car_base.gd" id="1_dghor"]
 [ext_resource type="Texture2D" uid="uid://c145qrlbvny5u" path="res://glbModels/Cars/Wheels/Wheel1_texture1.png" id="1_spouf"]
+[ext_resource type="AudioStream" uid="uid://by2xi06w7rp8q" path="res://Scenes/Cars/Engine/Engine.mp3" id="3_emg1a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ii7bs"]
 resource_name = "Material.119"
@@ -255,3 +256,8 @@ transform = Transform3D(1.000037, 0, -2.1606684e-07, 0, 1, 0, 2.1606684e-07, 0, 
 visible = false
 shape = SubResource("BoxShape3D_c8a5y")
 debug_color = Color(1, 0, 0, 1)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_emg1a")
+autoplay = true
+parameters/looping = true

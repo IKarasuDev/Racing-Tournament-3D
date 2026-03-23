@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyum0uhphjlm3"]
+[gd_scene load_steps=4 format=3 uid="uid://cyum0uhphjlm3"]
 
 [ext_resource type="Script" uid="uid://dtk3l3ilkjemn" path="res://Scenes/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bub4dmta6qe5f" path="res://Scenes/Tools/Transition/fade_transition.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bftxa6y1tecqv" path="res://Scenes/Tools/Music/audio_stream_player.tscn" id="3_8gbba"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_bo1nx")
@@ -9,3 +10,5 @@ script = ExtResource("1_bo1nx")
 [node name="SceneContainer" type="Node" parent="."]
 
 [node name="Transition" parent="." instance=ExtResource("2_8gbba")]
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("3_8gbba")]

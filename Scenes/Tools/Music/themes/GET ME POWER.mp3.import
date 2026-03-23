@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfy7164mcwogr"
+path="res://.godot/imported/GET ME POWER.mp3-5af2ed5451f009ff850145be7892300b.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Tools/Music/themes/GET ME POWER.mp3"
+dest_files=["res://.godot/imported/GET ME POWER.mp3-5af2ed5451f009ff850145be7892300b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

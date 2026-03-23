@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cj5njwaw4kw0r"
+path="res://.godot/imported/BACK ON THE ROCKS.mp3-3af0f4e8669587e006aa58955409db32.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Tools/Music/themes/BACK ON THE ROCKS.mp3"
+dest_files=["res://.godot/imported/BACK ON THE ROCKS.mp3-3af0f4e8669587e006aa58955409db32.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

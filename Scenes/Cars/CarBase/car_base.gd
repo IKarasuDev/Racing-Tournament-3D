@@ -18,6 +18,8 @@ var brake_duration := 0.6
 @onready var rl = $RearLeft
 @onready var rr = $RearRight
 
+@onready var engine_sound = $AudioStreamPlayer3D
+
 
 @export var vehicle_id : int
 @export var vehicle_name : String
@@ -40,8 +42,8 @@ var brake_duration := 0.6
 var racing_line = []
 var current_point := 0
 
-
 func _ready():
+	engine_sound.play()
 
 	if car_mesh:
 		$CarMesh.mesh = car_mesh
