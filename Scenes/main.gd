@@ -17,7 +17,7 @@ var tracks = [
 ]
 
 var current_track_index := 0
-
+var tournament_finished := false
 
 func _ready():
 	load_vehicle_selection()
@@ -57,7 +57,9 @@ func _on_vehicles_ready(player_sc, player_name, player_id, opponent_sc, opponent
 
 	await transition.fade_out(1.0)
 
-func show_bracket():
+func show_bracket(start_next_race := true):
+	if tournament_controller == null or tournament_controller.bracket == null:
+		return
 
 	for c in scene_container.get_children():
 		c.queue_free()
@@ -68,8 +70,9 @@ func show_bracket():
 	var rounds = tournament_controller.bracket.rounds
 	bracket_scene.setup(rounds)
 	
-	await get_tree().create_timer(3.0).timeout
-	start_race()
+	if start_next_race:
+		await get_tree().create_timer(3.0).timeout
+		start_race()
 
 
 func start_race():
@@ -91,10 +94,20 @@ func load_track():
 		c.queue_free()
 
 	if current_track_index >= tracks.size():
+
+		if tournament_finished:
+			return
+
+		tournament_finished = true
+
 		print("Tournament finished")
 
-		# 🔥 MOSTRAR BRACKET FINAL CON CAMPEÓN
-		show_bracket()
+		show_bracket(false)
+		
+		await get_tree().create_timer(3.0).timeout
+		
+		show_end_menu()
+		
 		return
 
 	var track_path = tracks[current_track_index]
@@ -137,20 +150,7 @@ func _on_race_finished(player_won):
 
 		# se acaba el torneo
 		if current_track_index >= tracks.size():
-
-			await get_tree().create_timer(3.0).timeout
-
-			await transition.fade_in(1.5)
-
-			# reset
-			tournament_controller.reset()
-			current_track_index = 0
-
-			load_vehicle_selection()
-
-			await transition.fade_out(1.0)
-
-			return  #corta
+			return
 
 	else:
 		await transition.fade_in(1.5)
@@ -174,3 +174,34 @@ func show_result(text, player_won):
 		emit_signal("race_finished_signal", true)
 	else:
 		emit_signal("race_finished_signal", false)
+
+func show_end_menu():
+
+	for c in scene_container.get_children():
+		c.queue_free()
+
+	var end_menu = load("res://Scenes/UI/EndMenu/end_menu.tscn").instantiate()
+	scene_container.add_child(end_menu)
+
+	end_menu.restart_pressed.connect(_on_restart_pressed)
+	end_menu.exit_pressed.connect(_on_exit_pressed)
+
+func _on_restart_pressed():
+
+	await transition.fade_in(1.0)
+
+	tournament_controller.reset()
+	current_track_index = 0
+	tournament_finished = false 
+
+	load_vehicle_selection()
+
+	await transition.fade_out(1.0)
+
+
+func _on_exit_pressed():
+
+	if OS.has_feature("web"):
+		await _on_restart_pressed()
+	else:
+		get_tree().quit()
